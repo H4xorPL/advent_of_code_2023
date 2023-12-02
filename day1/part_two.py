@@ -1,5 +1,5 @@
-input_one = open('part_two_input.txt', 'r')
-lines = input_one.readlines()
+input = open('part_two_input.txt', 'r')
+lines = input.readlines()
 
 sum = 0
 
