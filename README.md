@@ -1,3 +1,3 @@
-I am learning python, started two days ago.
+I am learning python.
 
 Up to this point been coding in Go.
