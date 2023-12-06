@@ -5,16 +5,10 @@ def main() -> None:
     data = sys.stdin.read().strip().split('\n')
     ans = 0 
     seeds = data[0].removeprefix('seeds: ').split()
-
         
     items = []
-    total_items=0
     for i in range(1,len(seeds),2):
         items.append([int(seeds[i-1]), int(seeds[i-1])+int(seeds[i])])
-        total_items+=  int(seeds[i-1])+int(seeds[i])- int(seeds[i-1])
-    
-    print(items)
-    print(total_items)
 
     next_mapping = []
     new_items = []
@@ -29,10 +23,7 @@ def main() -> None:
                 new_items=[]
             continue
         dest, src, range_len = line.split()
-        count=0
-        for i in items:
-            count+= int(i[1])-int(i[0])
-        print(f'count {count}')
+        
         if new_items != []:
             items = new_items.copy()
             new_items=[]
@@ -53,7 +44,6 @@ def main() -> None:
                 print(f'and nothing to new_items')
                 print(40*"=")
             elif src_min > lower and src_min <= upper and src_max <= upper and src_max >= lower:
-                print(40*"*")
                 print('cut out part')
                 print(src_min, src_max, lower,upper)
                 next_mapping.append([max(lower,src_min)+op, min(upper, src_max)+op])
@@ -95,10 +85,6 @@ def main() -> None:
         next_mapping.append(i)
     next_mapping.sort()
     print(f'new_items {new_items} next_mapping {next_mapping}')
-    end_items=0
-    for i in next_mapping:
-        end_items+=  int(i[1])-int(i[0])
-    print(f'end items {end_items}')
     ans = next_mapping[0][0]
     print(ans) # 79004094
 
